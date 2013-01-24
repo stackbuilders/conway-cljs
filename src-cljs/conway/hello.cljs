@@ -1,6 +1,6 @@
 (ns conway.hello)
 
-(defn cell 
+(defn cell
   "Returns the cell at the given coordinates"
   [x y]
   (.item (.-cells (.item (.getElementsByTagName js/document "tr") x)) y))
@@ -13,30 +13,30 @@
     1
     0))
 
-(defn set-cell-value [x y value] 
+(defn set-cell-value [x y value]
   (let [color (if (= 0 value) "white" "blue")]
     (set! (.-bgColor (cell x y)) color)))
 
 (defn num-alive [nbs]
   (reduce + 0 nbs))
 
-(defn valid-coords [board x y] 
+(defn valid-coords [board x y]
   (filter #(and (>= (first %) 0)
                 (>= (last %) 0)
                 (>= (- (count board) 1) (first %))
                 (>= (- (count board) 1) (last %)))
-          (map #(vector (+ (first %) x) (+ (last %) y)) [[-1 -1] [-1 1] [1 -1] [1 1] [0 1] [1 0] [-1 0] [0 -1]])))
-
+          (map #(vector (+ (first %) x) (+ (last %) y))
+               [[-1 -1] [-1 1] [1 -1] [1 1] [0 1] [1 0] [-1 0] [0 -1]])))
 
 (defn apply-state [state]
-  (doseq [x (range 0 (count state)) y (range 0 (count state))] (set-cell-value x y (get-in state [x y]))))
-
+  (doseq [x (range 0 (count state)) y (range 0 (count state))]
+    (set-cell-value x y (get-in state [x y]))))
 
 (defn nabes [state x y]
   (map #(get-in state [(first %) (last %)]) (valid-coords state x y)))
 
 (defn initialize-board [n f]
-  (vec (for [x (range 0 n)] 
+  (vec (for [x (range 0 n)]
     (vec (for [y (range 0 n)] (f x y))))))
 
 (defn random-board [n]
@@ -48,7 +48,7 @@
 (defn current-board []
   (initialize-board (table-size) (fn [x y] (get-cell-value x y))))
 
-(defn alive-cell-next-state 
+(defn alive-cell-next-state
   [alive-nabes]
   (cond (> 2 alive-nabes) 0
         (= 2 alive-nabes) 1
@@ -78,9 +78,3 @@
 
 ;; Run this function when the window has loaded
 (set! (.-onload js/window) setup)
-
-
-
-
-
-

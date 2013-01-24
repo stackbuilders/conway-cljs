@@ -18,4 +18,4 @@
      (include-js "/js/main.js")]
     [:body
       [:h1 "Conway"]
-     (square-board 10)]))
+     (square-board 20)]))
