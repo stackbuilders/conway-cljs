@@ -10,11 +10,15 @@ Set up and start the server like this:
 
 Now, point your web browser at `http://localhost:3000`, and see the web app in action!
 
+## Live
+
+Check it out live [here](http://conway-cljs.herokuapp.com/)
+
 ## Authors
 
-Sander Hartlage
-Sebastian Sogamoso
-Justin Leitgeb
+[Sander Hartlage](https://github.com/sander6) -
+[Sebastian Sogamoso](https://github.com/sebasoga) -
+[Justin Leitgeb](https://github.com/jsl)
 
 ## License
 
