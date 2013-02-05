@@ -1,1 +1,1 @@
-web: lein with-profile production trampoline run -m conway.hello $PORT
+web: lein ring server-headless $PORT
