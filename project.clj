@@ -11,4 +11,5 @@
               :compiler {:output-to "resources/public/js/main.js"
                          :optimizations :whitespace
                          :pretty-print true}}]}
-  :ring {:handler conway.routes/app})
+  :ring {:handler conway.routes/app}
+  :min-lein-version "2.0.0")
